@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 require('dotenv').config();
 
-const mongoURL = process.env.mongoURL || 'mongodb://localhost:21017/AsafMedia'
+const mongoURL = process.env.mongoURL || 'mongodb://localhost:27017/AsafMedia'
 mongoose.connect(mongoURL, {})
 .then(() => console.log(`connected to mongo on ${mongoURL}`))
 .catch(err => console.error(err));
@@ -15,7 +15,7 @@ const actionSchema = new mongoose.Schema({
     },
     action: {
         type: String,
-        required: true
+        required: true,
     },
     IP: {
         type: String,
@@ -25,4 +25,4 @@ const actionSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.Model('Actions', actionSchema);
+module.exports = mongoose.model('Actions', actionSchema);

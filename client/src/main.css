@@ -1,24 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
 .sidebar {
   position: fixed;
+  float: right;
   right: 0;
   top: 0;
   bottom: 0;
   max-width: 100%;
+  width: 25%;
   padding-top: 200px;
   height: auto;
   align-items: center;
 }
 
+@media only screen and (max-width: 768px) {
+  * {
+    width: 100%;
+  }
+}
+
+
 .dice {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 250px;
-  padding: 20%;
+  max-width: 60%;
+  width: 100%;
+  height: auto;
+  padding: 10%;
+}
+
+.hand {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 50%;
+  height: auto;
 }
 
 .Board {
-    background-image: url('http://localhost:3000/images/sea.png');
+    background-image: url("http://localhost:3000/images/sea.png");
 }
 
 

@@ -2,13 +2,21 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 const Actions = require('./Models/actionsModel');
+const path = require('path');
+const process = require('process');
 const rateLimit = require("express-rate-limit");
 
-
-
+//middlewares
 app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({extended: false}));
+
+//load build
+const build = path.join(__dirname, "..","client", "build");
+//const public = path.join(__dirname, "..","client", "public");
+console.log(process.env.NODE_ENV);
+//app.use(express.static(public)); 
+app.use(express.static(build));
 //allow user to request only one request every one second!
 const limiter = rateLimit({
     windowMs: 1000,
@@ -16,7 +24,7 @@ const limiter = rateLimit({
 })
 app.use(limiter);
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send('hello world');
 })
 
@@ -46,5 +54,12 @@ app.post('/roll',async (req,res) => {
     })
 });
 
+//make sure app will always run even if there was err
+process.on('uncaughtException', err => {
+    console.error(err);
+    console.log("still alive");
+});
+
+//start the app
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`connected on port ${port}`));

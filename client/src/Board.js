@@ -18,17 +18,29 @@ function Board() {
   };
 
   return (
-    <div className="Board">
+    <div
+      className="Board"
+      style={{ backgroundImage: "url(../images/sea.png)" }}
+    >
+
+      {/* side bar on the right*/}
       <div className="bg-light text-center sidebar">
-        <Button className="bg-light m-5 ">
-          <Image src={"../images/hand.png"} roundedCircle alt="image"></Image>
+        <Button className="bg-light hand m-2">
+          <Image
+            src={"../images/hand.png"}
+            roundedCircle
+            />
+          <span className="d-block text-dark">Browse Map</span>
+          
         </Button>
         <div>
           <Button onClick={handleClick}>ROLL THE CUBE</Button>
           <div className="dice">
-            <Image src={`../images/dice/${cube}.png`} thumbnail alt="image" />
+            <Image src={`../images/dice/${cube}.png`} thumbnail/>
           </div>
-          <Badge className="bg-primary ">Rolled: {cube}</Badge>
+          <h2>
+            <Badge className="bg-primary">Rolled: {cube}</Badge>
+          </h2>
         </div>
       </div>
     </div>

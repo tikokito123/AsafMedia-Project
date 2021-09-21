@@ -1,6 +1,7 @@
 import { Badge, Button, Image } from "react-bootstrap";
 import { useState } from "react";
 import "./main.css";
+
 function Board() {
   const [cube, setCube] = useState(3);
   const handleClick = async (e) => {
@@ -18,10 +19,7 @@ function Board() {
   };
 
   return (
-    <div
-      className="Board"
-      style={{ backgroundImage: "url(../images/sea.png)" }}
-    >
+    <div className="Board">
 
       {/* side bar on the right*/}
       <div className="bg-light text-center sidebar">

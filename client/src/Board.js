@@ -20,21 +20,19 @@ function Board() {
 
   return (
     <div className="Board">
-
+      <div className="text-black">
+        
+      </div>
       {/* side bar on the right*/}
       <div className="bg-light text-center sidebar">
         <Button className="bg-light hand m-2">
-          <Image
-            src={"../images/hand.png"}
-            roundedCircle
-            />
+          <Image src={"../images/hand.png"} roundedCircle />
           <span className="d-block text-dark">Browse Map</span>
-          
         </Button>
         <div>
           <Button onClick={handleClick}>ROLL THE CUBE</Button>
           <div className="dice">
-            <Image src={`../images/dice/${cube}.png`} thumbnail/>
+            <Image src={`../images/dice/${cube}.png`} thumbnail />
           </div>
           <h2>
             <Badge className="bg-primary">Rolled: {cube}</Badge>

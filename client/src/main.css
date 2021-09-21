@@ -1,0 +1,24 @@
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  max-width: 100%;
+  padding-top: 200px;
+  height: auto;
+  align-items: center;
+}
+
+.dice {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  padding: 20%;
+}
+
+.Board {
+    background-image: url('http://localhost:3000/images/sea.png');
+}
+
+

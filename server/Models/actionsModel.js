@@ -20,7 +20,7 @@ const actionSchema = new mongoose.Schema({
     IP: {
         type: String,
         required: true,
-        default: "127.0.0.1"//req.connection.remoteAddress
+        default: "127.0.0.1" //req.connection.remoteAddress
     }
 });
 

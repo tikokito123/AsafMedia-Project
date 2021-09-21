@@ -22,21 +22,23 @@ app.get('/', (req, res) => {
 
 
 app.post('/roll',async (req,res) => {
+    //rolling the cube
+    const cube = [1, 2, 3, 4, 5, 6];
+    const cubeResult = Math.floor(Math.random() * cube.length + 1);
+    //validate cube
+    console.log(cubeResult);
+    if(!cubeResult || cubeResult > 6 || cubeResult < 1) return res.status(406).send('cube was crashed');
     //create the action that the client just did and write it to the db
     const action = await new Actions({
         date: Date.now(),
-        action: req.body.action,
+        action: `player rolled the cube ${cubeResult}`,
         IP: `${req.socket.remoteAddress}`
     })
     //validate
     if(!action) return res.status(400).send('could not create action schema');
     //save it in db if successfully validate
     await action.save();
-    //roll the cube
-    const cube = [1, 2, 3, 4, 5, 6];
-    const cubeResult = Math.floor(Math.random() * cube.length);
-    //validate cube
-    if(!cubeResult || cubeResult > 6 || cubeResult < 1) return res.status(406).send('cube was crashed');
+   
     //send data to client
     res.status(200).json({
         cubeNumber: cubeResult,

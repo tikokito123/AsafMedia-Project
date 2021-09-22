@@ -20,7 +20,7 @@ app.use(express.static(build));
 //allow user to request only one request every one second!
 const limiter = rateLimit({
     windowMs: 1000,
-    max: 1
+    max: 5
 })
 app.use(limiter);
 

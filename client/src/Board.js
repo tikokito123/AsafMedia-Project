@@ -1,44 +1,48 @@
-import { Badge, Button, Image } from "react-bootstrap";
-import { useState } from "react";
+import { Badge } from "react-bootstrap";
 import "./main.css";
+import { Sidebar } from "./Sidebar";
 
 function Board() {
-  const [cube, setCube] = useState(3);
-  const handleClick = async (e) => {
-    e.preventDefault();
-
-    const res = await fetch("/roll", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-    });
-    const data = await res.json();
-    setCube(data.cubeNumber);
-  };
-
   return (
     <div className="Board">
-      <div className="text-black">
-        
-      </div>
-      {/* side bar on the right*/}
-      <div className="bg-light text-center sidebar">
-        <Button className="bg-light hand m-2">
-          <Image src={"../images/hand.png"} roundedCircle />
-          <span className="d-block text-dark">Browse Map</span>
-        </Button>
-        <div>
-          <Button onClick={handleClick}>ROLL THE CUBE</Button>
-          <div className="dice">
-            <Image src={`../images/dice/${cube}.png`} thumbnail />
-          </div>
-          <h2>
-            <Badge className="bg-primary">Rolled: {cube}</Badge>
-          </h2>
-        </div>
-      </div>
+    <Sidebar />
+      <span id="ground1">
+        <img src="../images/ground01.png" alt="" className="boardIamges"/>
+        <Badge pill className="badge bg-danger">
+          1
+        </Badge>
+      </span>
+
+      <span id="ground2">
+        <img src="../images/ground02.png" alt="" className="boardIamges" />
+        <Badge pill className="badge bg-danger">
+          2
+        </Badge>
+      </span>
+      <span id="ground3">
+        <img src="../images/ground03.png" alt="" className="boardIamges" />
+        <Badge pill className="badge bg-danger">
+          3
+        </Badge>
+      </span>
+      <span id="ground4">
+        <img src="../images/ground04.png" alt="" className="boardIamges" />
+        <Badge pill className="badge bg-danger">
+          4
+        </Badge>
+      </span>
+      <span id="ground5">
+        <img src="../images/ground05.png" alt="" className="boardIamges" />
+        <Badge pill className="badge bg-danger">
+          5
+        </Badge>
+      </span>
+      <span id="ground6">
+        <img src="../images/ground06.png" alt="" className="boardIamges" />
+        <Badge pill className="badge bg-danger">
+          6
+        </Badge>
+      </span>
     </div>
   );
 }

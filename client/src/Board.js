@@ -1,9 +1,23 @@
 import { Badge } from "react-bootstrap";
 import "./main.css";
+import { useEffect, useState } from "react";
 import { Sidebar } from "./Sidebar";
 
-function Board() {
+
+
+export function Board() {
+  const [isPortrail, setIsPortrail] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      setIsPortrail(true);
+    }
+  }, [isPortrail]);
+  
+
+  if(isPortrail) return <div className="text-center text-black h1">This Website is not supporting portrail mode!</div>
   return (
+        
     <div className="Board">
     <Sidebar />
       <span id="ground1">

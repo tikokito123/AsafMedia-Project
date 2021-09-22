@@ -8,4 +8,6 @@ date: 21.9.2021 entry : 2:30  exit: 6:30, total: 4 hours, description: front-end
 date: 21.9.2021 entry : 14:30 exit: 15:15, total: 2 hours, description: frontend, background added
 
 
-date: 22.9.2021 entry: 00:00 exit:, total, description
+date: 22.9.2021 entry: 00:00 exit: 3:00, total: 3 hours, description: edit front end, add pictures to the board!
+
+

@@ -6,6 +6,10 @@ import { Sidebar } from "./Sidebar";
 
 
 export function Board() {
+
+  const player = document.body.getElementsByClassName("player");
+
+  
   const [isPortrail, setIsPortrail] = useState(false);
 
   useEffect(() => {
@@ -20,6 +24,7 @@ export function Board() {
         
     <div className="Board">
     <Sidebar />
+      <img className="player" src="../images/pirate.png" alt=""></img>
       <span id="ground1">
         <img src="../images/ground01.png" alt="" className="boardIamges"/>
         <Badge pill className="badge bg-danger">

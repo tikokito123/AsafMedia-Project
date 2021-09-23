@@ -17,4 +17,4 @@ RUN  npm install
 COPY server .
 COPY --from=builder /usr/app/build /usr/app/build
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

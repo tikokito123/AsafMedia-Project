@@ -78,7 +78,18 @@
   height: auto;
 }
 
+.player {
+  position: relative;
+  display: inline;
+  width: 10%;
+  height: auto;
+  z-index: 10;
+  transition: all 1s;
+}
 
+div:hover .player{
+  transform: translateX(100%) translateY(20%);
+}
 .dice {
   display: block;
   margin-left: auto;

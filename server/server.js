@@ -3,12 +3,11 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const Actions = require('./Models/actionsModel');
 const path = require('path');
-const process = require('process');
 const Messages = require('./Models/messagesModel');
 const rateLimit = require("express-rate-limit");
 const notAllowed = require('./middlewares/notAllowed');
 
-//middlewares
+//middlewares_______________
 app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({extended: false}));
@@ -25,8 +24,9 @@ const limiter = rateLimit({
     max: 5
 })
 app.use(limiter);
+//________________________
 
-app.get('/api', (req, res) => {
+app.get('/api',notAllowed, (req, res) => {
     res.send('hello world');
 })
 
@@ -50,7 +50,7 @@ app.post('/roll',async (req,res) => {
         data.action = `rolled 1 and lost cause stay in place`;
     }
     else if(cubeResult === 2) {
-        Math.random() < 0.5 ? data.message = 'The alcohol was posioned! you lost!' : data.message = 'The alcohol gave you power to rich to the chest! You Won!'
+        Math.random() < 0.5 ? data.message = 'Alcohol: The alcohol was posioned! you lost!' : data.message = 'Alcohol: The alcohol gave you power to rich to the chest! You Won!'
         data.action = `rolled 2 and ${data.message}`; 
     }
     else if(cubeResult === 3) {
@@ -65,7 +65,7 @@ app.post('/roll',async (req,res) => {
         const messages = await Messages.find().select('message -_id');
         const randMessage = Math.floor(Math.random() * messages.length);
 
-        data.message = messages[randMessage].message;
+        data.message = `message from a bottle: ${messages[randMessage].message}`;
         data.action = `rolled 5 and get message: ${data.message}`;
     }
     else if (cubeResult === 6) { 
@@ -83,28 +83,22 @@ app.post('/roll',async (req,res) => {
     if(!action) return res.status(400).send('could not create action schema');
     //save it in db if successfully validate
     await action.save();
-    console.log(data.message);
     //send data to client
     res.status(200).send(data);
 });
 
-
 /* here you can create messages for the bottle messages, I put a middleware to cancle any request,  
    because most likely I should do it manually! BUT, if you wish to use it with postman to make your life easier
    just delete the middleware (notAllowed) and start create messages!
-   
-   because there is no users and user authentication to this website, I skip the part of checking 
-   if user is admin or not...
-   
 */
 app.post('/create-messages',notAllowed, async (req, res) => {
     const message = await new Messages({
         message: req.body.message
     });
+    
     if(!message) return res.sendStatus(400);
     
     message.save();
-    
     res.status(201).send({message});
 });
 

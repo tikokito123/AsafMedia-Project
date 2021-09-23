@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+  zoom: 105%;
+  /*not working for some reason -moz-transform:  scale(2); */
+}
+
+.sidebar {
+  overflow: auto;
+  position: fixed;
+  float: right;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  max-width: 100%;
+  width: 25%;
+  padding-top: 200px;
+  height: auto;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 10; 
+}
+
+@media only screen and (max-width: 724px) {
+  .sidebar .dice .hand {
+    width: 100%;
+    overflow: scroll;
+    overflow-x: auto;
+  }
+  .boardImages{
+    width: 100%;
+    height: auto; 
+    max-width: 25px;
+    display: block;
+  }
+}
+
+#ground1 {
+  position: absolute;
+  top: 10%;
+  margin-top: 10%;
+}
+
+#ground2 {
+  position: absolute;
+  left: 50%;
+}
+
+#ground3 {
+  position: absolute;
+  left: 75%;
+  margin-left: 25%;
+  padding: 10%;
+}
+
+#ground4 {
+  position: absolute;
+  left: 50%;
+  margin-top: 25%;
+}
+
+#ground5 {
+  position: absolute;
+  top: 50%;
+  margin: 10%;
+
+}
+
+#ground6 {
+  position: absolute;
+  left: 75%;
+  margin-left: 25%;
+  top: 50%;
+  padding: 10%;
+}
+
+.boardImages{
+  width: 100%;
+  max-width: 10px;
+  height: auto;
+}
+@keyframes board {
+  0%{
+    top: 10%;
+    left: 5%;
+  }
+  16% {
+    left: 70%;
+    top: 0%;
+
+  }
+  33% {
+    left: 120%
+  }
+  50% {
+    left: 70%;
+    top: 50%;
+  }
+  66%{
+    top: 50%
+  }
+  100% {
+    left: 120%; 
+    top: 50%;
+  }
+
+}
+
+.player {
+  position: absolute;
+  width: 10%;
+  height: auto;
+  z-index: 10;
+
+}
+
+.dice {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60%;
+  width: 100%;
+  height: auto;
+  padding: 10%;
+}
+
+body {
+  background-image: url("./images/sea.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #464646;
+}
+
+.hand {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+  margin-bottom: 100px;
+}

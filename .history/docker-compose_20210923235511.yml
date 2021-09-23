@@ -1,0 +1,8 @@
+services:
+    web:
+        build: .
+    db:
+        image: mongo:latest
+        container_name: db
+        volumes: 
+            ~/mongo/data:/data/db

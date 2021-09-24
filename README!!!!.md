@@ -26,5 +26,3 @@ if there is no docker on your computer do as follow
 # Bugs in the app
 1. I didn't manage to finish the browse map, so it doesn't work!
 
-2. The player will move all around the map but I didn't finish the procces. he will not stop at the point he suppose to,
-for example if the cube is lands on 4, the player will run all over the map and will not stop on ground 4.   

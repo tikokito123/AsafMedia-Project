@@ -3,27 +3,27 @@ import "./main.css";
 import { useEffect, useState } from "react";
 import { Sidebar } from "./Sidebar";
 
-
-
 export function Board() {
-  
   const [isPortrail, setIsPortrail] = useState(false);
-  
-  
-  
-  useEffect(() => {
-    if(window.matchMedia("(orientation: portrait)").matches) setIsPortrail(true);
-  }, [isPortrail]);
-  
 
-  if(isPortrail) return <div className="text-center text-black h1">This Website is not supporting portrail mode!</div>
+  useEffect(() => {
+    if (window.matchMedia("(orientation: portrait)").matches)
+      setIsPortrail(true);
+  }, [isPortrail]);
+
+  
+  if (isPortrail)
+    return (
+      <div className="text-center text-black h1">
+        This Website is not supporting portrail mode!
+      </div>
+    );
   return (
-        
     <div className="Board">
-    <Sidebar />
-      <img className="player" src="../images/pirate.png" alt=""></img>
+      <Sidebar />
+      <img className="player" src="/images/Pirate.png" alt=""></img>
       <span id="ground1">
-        <img src="../images/ground01.png" alt="" className="boardIamges"/>
+        <img src="../images/ground01.png" alt="" className="boardIamges" />
         <Badge pill className="badge bg-danger">
           1
         </Badge>

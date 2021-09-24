@@ -1,52 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Badge, Button, Image, Modal } from "react-bootstrap";
 import "./main.css";
 
 export function Sidebar(props) {
-  const [cube, setCube] = useState(3);
+  const [cube, setCube] = useState(1);
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState();
 
   const handleShow = () => setShow(true);
-  const handleClose = () => {setShow(false); window.location.reload();};
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload();
+  };
 
-
-  const handleMovement = () => {
-    const player = document.getElementsByClassName('player');
-    let animationPlayState = player[0].style.animationPlayState;
-
-    for(let i = 1; i < cube; i++){
-      switch(i){
-        case 1:
-          animationPlayState = "pause";
-          break;
-        case 2: 
-
-          break;
-        case 3: 
-
-          break;
-        case 4: 
-
-          break;
-          case 5: 
-
-          break;
-          case 6: 
-
-          break;
-          default: 
-          console.log('error');
+  
+  //player animation
+  useEffect(() => {
+    const player = document.getElementsByClassName("player");
+    switch (cube) {
+      case 1:
+        player[0].style.animation = "board1 1s 1 forwards";
+        break;
+      case 2:
+        player[0].style.animation = "board2 2s 1 forwards";
+        break;
+      case 3:
+        player[0].style.animation = "board3 4s 1 forwards";
+        console.log(player[0].style.animation);
+        break;
+      case 4:
+        player[0].style.animation = "board4 6s 1 forwards";
+        break;
+      case 5:
+        player[0].style.animation = "board5 8s 1 forwards";
+        break;
+      case 6:
+        player[0].style.animation = "board6 10s 1 forwards";
+        break;
+      default:
+        console.log("there was error");
+        break;
     }
-
-    }
-    console.log(player[0].style);
-    player[0].style.animation = "board 10s 1"
-    player[0].style.animationFillMode = "forwards";
-
-    console.log(player[0]);
-  }
-
+  }, [cube]);
   const handleClick = async () => {
     const res = await fetch("/roll", {
       method: "POST",
@@ -76,7 +71,7 @@ export function Sidebar(props) {
         </Modal>
       )}
       <Button className="bg-light hand m-2">
-        <Image src={"../images/hand.png"} roundedCircle />
+        <Image src={"/images/hand.png"} roundedCircle />
         <span className="d-block text-dark">Browse Map</span>
       </Button>
       <div>
@@ -84,7 +79,6 @@ export function Sidebar(props) {
           onClick={() => {
             handleClick();
             handleShow();
-            handleMovement();
           }}
         >
           ROLL THE CUBE

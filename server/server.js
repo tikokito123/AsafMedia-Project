@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}));
 
 //load build
-const build = path.join(__dirname, "..","client", "build");
+const build = path.join(__dirname, "build");
 //const public = path.join(__dirname, "..","client", "public");
 console.log(process.env.NODE_ENV);
 //app.use(express.static(public)); 
@@ -41,7 +41,6 @@ app.post('/roll',async (req,res) => {
     //validate cube
     if(!cubeResult || cubeResult > 6 || cubeResult < 1) return res.status(406).send('cube was crashed');
     data.cubeNumber = cubeResult;
-
 
     
     /*going through all the options that can come out from the cube, and add to the data that will send to the client*/
